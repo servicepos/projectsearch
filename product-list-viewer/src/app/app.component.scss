@@ -1,0 +1,29 @@
+@import './theme/styles/globals.scss';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    
+    & .header {
+        width: calc(100% - 30px);
+        height: 50px;
+        display: table-cell;
+        color: $wetAsphalt;
+        padding: 15px;
+
+        & h2 {
+            text-align: center;
+        }
+    }
+
+    & .content {
+        width: calc(100% - 30px);
+        height: calc(100% - 80px);
+        padding: 15px;
+        display: table-cell;
+        overflow: auto;
+    }
+}

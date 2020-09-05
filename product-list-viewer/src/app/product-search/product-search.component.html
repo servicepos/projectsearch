@@ -1,0 +1,21 @@
+<div class="product-list-search">
+    <input type="text" [formControl]="searchInput" placeholder="Search for a product">
+</div>
+
+<div class="product-list-container">
+    <ul>
+        <li *ngFor="let product of productList$ | async | paginate: { itemsPerPage: 10, currentPage: page }">
+            
+            <span class="product-title">{{ product.title | slice:0:55}}...</span>
+            <span class="product-profit">
+                <span class="product-profit-dkk" *ngIf="(product.costprice && product.price)">DKK</span><span class="product-profit-value" *ngIf="(product.costprice && product.price)">{{ (product.price * 1.25) - product.costprice | number }}</span>
+            </span>
+        </li>
+    </ul>
+    
+    <div class="controls">
+        <pagination-controls class="paginator" (pageChange)="page = $event"></pagination-controls>
+    </div>
+</div>
+
+

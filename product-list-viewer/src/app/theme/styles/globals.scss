@@ -1,0 +1,70 @@
+
+
+h1 {
+    font-weight: 700;
+    font-size: 3.8vh;
+    line-height: 2vh;
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 3vh;
+    line-height: 2vh;
+}
+
+h3 {
+    font-weight: 700;
+    font-size: 2.5vh;
+    line-height: 2vh;
+}
+
+h4 {
+    font-weight: 700;
+    font-size: 2vh;
+    line-height: 2vh;
+}
+
+h5 {
+    font-weight: 700;
+    font-size: 1.8vh;
+    line-height: 2vh;
+}
+
+
+h6 {
+    font-weight: 700;
+    font-size: 1.6vh;
+    line-height: 2vh;
+}
+
+p, a, span {
+    font-size: 1.5vh;
+    line-height: 2vh;
+    font-weight: 400;
+}
+
+input {
+    font-size: 1.6vh !important;
+    font-weight: 300 !important;
+}
+
+input::placeholder {
+    font-size: 1.6vh !important;
+    font-weight: 300 !important;
+}
+
+$paragraph-text-grey: rgb(87, 89, 91);
+$header-text-grey: rgb(50, 52, 53);
+
+/* Application specific colors */
+$wetAsphalt: #34495e; 
+$midnightBlue: #2c3e50; 
+
+$peterRiver: #3498db; 
+$belizeHole: #2980b9; 
+
+$amethyst: #9b59b6; 
+$wisteria: #8e44ad;
+
+$emerald: #2ecc71; 
+$nephritis: #27ae60; 
