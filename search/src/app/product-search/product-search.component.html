@@ -1,0 +1,48 @@
+<div id="search" style="display:inline;" fxLayout="row">
+  <mat-form-field appearance="fill" fxFlex.lg="20" >
+    <mat-label>Search</mat-label>
+    <input matInput [(ngModel)]="searchData.raw" placeholder="search" #input>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Sort by</mat-label>
+    <mat-select [(ngModel)]="searchData.sort" (selectionChange)="updateOrdering($event)" #sorter>
+      <mat-option value="name">Name</mat-option>
+      <mat-option value="price">Price</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div>
+  <div fxLayout="row wrap" fxLayoutGap="24px">
+    <mat-card class="product-card" *ngFor="let product of page"  fxFlex.lg="15" fxFlex.lt-lg="30" fxFlex.xs="100">
+      <mat-card-header>
+        <mat-card-title matTooltip="{{product.title}}">{{(product.title | slice:0:40) + (product.title.length > 40 ? '...' : '')}}</mat-card-title>
+        <mat-card-subtitle>{{product.brand}} - {{product.suppliername}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQMAAADCCAMAAAB6zFdcAAAAZlBMVEX///8AAACZmZm+vr7Dw8OJiYnp6ene3t67u7vh4eHm5uaTk5Ps7OwLCwsdHR24uLgWFhZpaWnLy8t+fn4bGxsmJibX19enp6dSUlJbW1uFhYWgoKBzc3OxsbEwMDA2NjYRERE+Pj4I55hqAAACTUlEQVR4nO3c7W6CMBSAYZmKHyCoTJ1zc+7+b3JAQQu0WJMZc+j7/MNmJrw5JQpmoxEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzi96eI5q9+tSczYNnmb/61JyNn9Zg/OpTc5Y32Gwn/227EdZg+oS3ndKABiMaFGhAgwINaFDwtMF+u78deNngVH4+PtSHPjb4qL4kHKtjDxtk129Kn+oF/xostK+Ly/KVITRIl4+8yUlroC4JA2gwD5LwgTf50hpk5SvyG6T5uawemIRMa6DeTXwDdX9t7T4J353bR9Ib1LcY390nQWugXhDeIL2ezsp5EtLWGAhvoN9odr8wHqq/+K6ORTdIA93aeTsss/PunMX1oeQG7ccN7tuhSXCD7hOXnu0Q/yysa3IbpJ0EPZ8T4nzRGkFsA/NzN8vnhHBXBLJFkNrA9ujRuB3iRC1aIghtYNoI1gtjuK4XzRFkNuh7AN2ZhHIjVIGMEUQ2sE9BeU1oXhjjtb5oiiCxwb2fITS2Q5g0Fw2/thDY4P4vMbTtEO/ai91JkNegfyNUk1Bvh9iw2IkgrUE0cUgQBBc1CWFnCopA7e0grcGvU4LqfkJ3IxgnQVoDZ/l2iC+2xeYkDLZBkGzP9kCNSRhug356BF8b6NvB2wbaJPjb4BbB4wbX7eBzg3oSvG5QTYLfDdTHZr8bqO3ge4NiO3jfIJ8EGgRhRIPkSIMCDWhAAxrQgAY0oAENaEADGtCABsNowP8C4X/CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwgD8LsRyFBE1PQAAAAABJRU5ErkJggg==" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <div *ngIf="product.tags.length > 0">tags:{{product.tags}}</div>
+        <div style="float:right">price {{product.price}}{{currency}}</div>
+        <div>
+          profit: <!-- profit: (price | ?)dkk -->
+          <span *ngIf="hasProfitInsight(product)">
+            <span matTooltip="cost: {{product.costprice}}{{currency}}">
+              {{profit(product.price, product.costprice) | number : '1.2-2'}}
+            </span>
+          </span>
+          <span *ngIf="hasProfitInsight(product) == false">
+            ?
+          </span>
+          {{currency}}
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <mat-paginator
+                 [length]="results.length"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="pageSizeOptions"
+                 (page)="updatePage($event)"></mat-paginator>
+</div>
