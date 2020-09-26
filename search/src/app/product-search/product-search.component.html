@@ -1,0 +1,15 @@
+<section>
+  <mat-form-field appearance="outline">
+    <mat-icon matPrefix>search</mat-icon>
+    <input
+      type="text"
+      autofocus
+      autocomplete="off"
+      placeholder="Search product information"
+      matInput
+      (keyup)="filterString$.next($event.target.value)"
+    />
+  </mat-form-field>
+
+  <app-product-list [filterString$]="filterString$" [products$]="products$"></app-product-list>
+</section>
