@@ -8,7 +8,7 @@ Angular is huge framework and for this project only a few fundamental features i
   
 All data is loaded into the client from `products.json`. Meaning this project has no server part.
 
-The project can also be implemented using https://angular.io/.
+The project can be implemented using https://angular.io/.
 
 **Those docs are useful**
 
