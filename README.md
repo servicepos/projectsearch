@@ -21,7 +21,7 @@ The project can be implemented using https://angular.io/.
 **To do**
 
 1. Clone this repo and create a branch with your name.
-1. Initialize an angular project `ng new search` and create a component `ng g c product-search` and using the angular CLI
+1. Initialize an angular project `ng new search` and create a component `ng g c product-search` using the angular CLI
 1. When done coding. Make sure you fulfil the requirements and make sure the project builds `ng build`.
 1. Find a cool way to deliver the project
 
@@ -42,8 +42,7 @@ The project can be implemented using https://angular.io/.
     `products.json` should only be loadws once.
    `exhaustMap` might help you solve any race condition issues. 
   
-**Extra questions, for extra fun**
+**Extra question, for extra fun**
 1. Which data structure makes this search fast, like almost constant time. Show example?
-1. It's friday night. How much beer do you drink?
 
 
