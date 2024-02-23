@@ -1,48 +1,51 @@
 # Product search
 
-From now, you can code this project in any JS/TS framework you prefer, but make sure to fullfill the requestments.    
+Your task is to implement a product listing feature. The products are available from the [products.json](https://raw.githubusercontent.com/servicepos/projectsearch/0f840c4a3793eca4f0c22141238f02373bbe49ea/products.json) file included in this repository. Your solution should make it possible for users to browse and search the products.
 
-The goal of the project is to create a product list viewer and gain some experience with angular. 
-Mainly only components, the template engine, HTTP Client and reactiveX.
-Angular is huge framework and for this project only a few fundamental features is needed. 
-  
-All data is loaded into the client from `products.json`. Meaning this project has no server part.
+### Getting started
+1. Choose your framework
+2. Create a new git repository and commit your solution to this repository.
+3. Implement your solution to match the requirements below.
+4. When you are done, please send us a link to your repository. (You could use GitHub, GitLab, Bitbucket or similar to host your repository)
 
-The project can be implemented using https://angular.io/.
+We look forward to seeing your solution.
 
-**Those docs are useful**
+## Functional requirements:
+1. Your solution must include a list of products.
+   1. The products should be fetched from the products.json file (Hint: if you use Angular you should use the HttpClient to fetch the products.json file. https://angular.io/guide/http-request-data-from-server)
+   2. The list should be paginated (Hint: slice)
+2. The list of products should be searchable (Hint: https://www.learnrxjs.io/learn-rxjs/recipes/type-ahead)
+   1. The search results should be updated while typing in the search input. The search should debounced to prevent unnecessary fetches of the products.json file. When implemented correctly, the search should only fetch the products.json file once, when the user has stopped typing for a short period of time.
+   2. The search should be implemented in a fulltext manner, so that searching for "Power SRAM" will find the product "SRAM Power Pack PG-1050”.
+
+## Technical requirements:
+
+1. Your solution should be implemented using a modern framework like Angular, React, Vue.js or similar.
+2. Demonstrate that you understand relevant technologies in your chosen framework
+   1. Separation of components, services etc.
+3. Show you know how to handle callbacks or asynchronous code using: Observables, Promises, Signals or similar.
+4. Use GIT as your version control
+
+## Optional requirements:
+
+If you find the task too easy, or want further challenges, you can consider the following list of ideas to extend your solution.
+
+1. Detailed product view
+   1. When selecting a product in the list a detail/edit view should be shown.
+   2. If your chosen framework supports routing, you could add support for linking directly to a selected product.
+2. Update products
+   1. Add an edit form to allow users to update products.
+   2. If you want, you could store the products fetched from the json file in a local cache (variable in TS, in your service, indexedDB or similar), and then write your updated products to this store.
+3. Authentication
+   1. Add a login page to your project. Making sure that only authenticated users are allowed to browse the products.
+   2. Optionally add support for authorization, so that only certain users have access to all features of your project. For instance you could limit access to the searching feature, details view, edit view or similar.
+4. Your own ideas are welcome too! If you can think of a cool technology or feature, you would like to create, we encourage you to do so.
+
+### Helpful links:
 
 1. https://angular.io/guide/architecture-components
-1. https://angular.io/guide/setup-local
-1. https://angular.io/guide/interpolation#template-expressions
-1. https://angular.io/guide/pipes
-1. https://angular.io/guide/http
-
-**To do**
-
-1. Clone this repo and create a branch with your name.
-1. Initialize an angular project `ng new search` and create a component `ng g c product-search` using the angular CLI
-1. When done coding. Make sure you fulfil the requirements and make sure the project builds `ng build`.
-1. Find a cool way to deliver the project
-
-
-**Requirements**
-
-1. The products must be listed. You can read a json file with `HttpClient get`
-1. Pagination. Show, say 10, products per page. Hint: use `slice` pipe
-1. Full text search. The user must be able to search for the products using full text. Input should be provided via a text input. Once a user starts typing the list of products should be filtered using full text search so he can easily find what he needs.
-   1. This can done using  https://www.learnrxjs.io/ which is included in angular. 
-   1. Upon first search. Products should be loaded from products.json into the main memory. Search performed immidialtly after while the file is loading must not trigger a load.  For this use the angular http client and read products.json which should be stored in the assets folder. This means no products are loaded nor shown before the first time the user starts typing.
-   1. To relax the CPU the search must include debouncing. Meaning that nothing should happen unless the user has paused typing for at least, say 150 ms.
-   1. The search should be freetext. The user should find "SRAM Power Pack PG-1050" by typing "Power SRAM". Test on this specific case.
-   1. **Hint:** https://www.learnrxjs.io/learn-rxjs/recipes/type-ahead. However, you need to modify the pipe.
-
-
-1.  Test your app functions correctly according to 3.ii by simulating a slow connection in Dev Tools -> Network -> Fast 3G.
-    `products.json` should only be loadws once.
-   `exhaustMap` might help you solve any race condition issues. 
-  
-**Extra question, for extra fun**
-1. Which data structure makes this search fast, like almost constant time. Show example?
-
-
+2. https://angular.io/guide/setup-local
+3. https://angular.io/guide/interpolation#template-expressions
+4. https://angular.io/guide/pipes
+5. https://angular.io/guide/http
+6. https://www.learnrxjs.io
